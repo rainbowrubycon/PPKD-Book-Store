@@ -43,12 +43,15 @@ int main(){
             cout << "Your name is Wati!" << endl;
             break;
         default:
-            cout << "Not Found!" << endl;
+            cout << "You as Guest!" << endl;
+            name = "Guest";
+            discount = 0.05;
             break;
         }
     }
     else {
         cout << "You as Guest!" << endl;
+        name = "Guest";
         discount = 0.05;
     }
 
@@ -72,14 +75,19 @@ int main(){
         cout << BookID[i] << "     |    " << title[i] << "    |   " << price[i] << endl;
     }
     cout << "===================================" << endl;
+    
     cout << "Enter bookID" << endl;
     cin >> bookID;
-
+    while (bookID > 5)
+    {    
+    cout << "bookID not found!" << endl;
+    cout << "Enter bookID" << endl;
+    cin >> bookID;
+    }
     int total_discount = price[bookID-1]*discount;
     int total_price = price[bookID-1] - total_discount;
 
     cout << name << " is buying " << title[bookID-1] << " for " << total_price << " IDR" << endl;
-    
     cout << "Insert cash" << endl;
     cin >> cash;
     while(cash < total_price){
